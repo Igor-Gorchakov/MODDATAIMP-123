@@ -5,7 +5,7 @@ import java.util.concurrent.BlockingQueue;
 
 public class QueuedBlockingCoordinator implements BlockingCoordinator {
 
-    private static final Object QUEUE_STUB = new Object();
+    private static final Object STUB_ITEM = new Object();
     private BlockingQueue<Object> blockingQueue = null;
 
     public QueuedBlockingCoordinator(int capacity) {
@@ -14,7 +14,7 @@ public class QueuedBlockingCoordinator implements BlockingCoordinator {
 
     public void lock() {
         try {
-            this.blockingQueue.put(QUEUE_STUB);
+            this.blockingQueue.put(STUB_ITEM);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
