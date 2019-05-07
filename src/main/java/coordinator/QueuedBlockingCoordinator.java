@@ -12,7 +12,7 @@ public class QueuedBlockingCoordinator implements BlockingCoordinator {
         this.blockingQueue = new ArrayBlockingQueue<>(capacity);
     }
 
-    public void lock() {
+    public void acceptLock() {
         try {
             this.blockingQueue.put(STUB_ITEM);
         } catch (InterruptedException e) {
@@ -20,7 +20,7 @@ public class QueuedBlockingCoordinator implements BlockingCoordinator {
         }
     }
 
-    public void unlock() {
+    public void acceptUnlock() {
         try {
             this.blockingQueue.take();
         } catch (InterruptedException e) {

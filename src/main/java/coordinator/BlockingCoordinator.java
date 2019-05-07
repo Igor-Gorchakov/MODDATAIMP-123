@@ -2,7 +2,7 @@ package coordinator;
 
 public interface BlockingCoordinator {
 
-    void lock();
+    void acceptLock();
 
-    void unlock();
+    void acceptUnlock();
 }

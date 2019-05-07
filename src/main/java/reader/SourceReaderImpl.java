@@ -3,7 +3,7 @@ package reader;
 public class SourceReaderImpl implements SourceReader {
 
     private int index = 0;
-    private int total = 1000;
+    private int total = 100;
 
     @Override
     public String next() {
