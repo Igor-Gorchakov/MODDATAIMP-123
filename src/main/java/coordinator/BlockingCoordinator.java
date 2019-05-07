@@ -2,7 +2,7 @@ package coordinator;
 
 public interface BlockingCoordinator {
 
-    void countUp();
+    void lock();
 
-    void countDown();
+    void unlock();
 }

@@ -17,7 +17,7 @@ public class Main {
     private static void processFile() {
         BlockingCoordinator coordinator = new QueuedBlockingCoordinator(QUEUE_CAPACITY);
         while (SOURCE_READER.hasNext()) {
-            coordinator.countUp();
+            coordinator.lock();
             String record = SOURCE_READER.next();
             System.out.println("Sending record: " + record);
             SENDER.send(record, ar -> {
@@ -25,7 +25,7 @@ public class Main {
                     System.out.println("Sending failed for record: " + ar.result());
                 } else {
                     System.out.println("Sending succeeded record:" + ar.result());
-                    coordinator.countDown();
+                    coordinator.unlock();
                 }
             });
         }
